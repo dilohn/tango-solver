@@ -1,39 +1,42 @@
 # Tango Puzzle Solver
 
-This project automatically solves LinkedIn's Tango puzzle using a screenshot of the board. It detects the initial state and constraints of the puzzle from the image, solves it using a constraint satisfaction algorithm, and overlays the solution on the original image.
+This project detects and solves 6x6 Tango puzzles from images. It uses OpenCV for visual processing and constraint-based logic to deduce valid solutions based on cell contents and relationship markers.
 
+## Features
 
-## How It Works
+- Detects "C" and "M" markers using color recognition.
+- Identifies "equals" (=) and "excludes" (X) constraints between adjacent cells via template matching.
+- Enforces no-three-in-a-row and balancing constraints for valid logical deduction.
+- Overlays the final solution onto the original puzzle image.
 
-1. **Input**: Start with a screenshot of an empty or partially filled Tango puzzle board.
-2. **Detection**: The script detects all known symbols (`C` for yellow, `M` for blue) and constraint symbols (`=` and `X`) using template matching and color detection.
-3. **Solving**: A backtracking constraint solver deduces the full solution based on the detected input.
-4. **Overlay**: The solution is rendered back onto the original image.
+## Files
+
+- `main.py`: Main script to process the puzzle image, run the solver, and print the solution.
+- `read_board.py`: Handles image parsing, color and symbol detection, and constraint extraction.
+- `tango_algo.py`: Contains the logic solver implementing constraint propagation and backtracking.
+- `overlay_solution.py`: Writes the solution on top of the puzzle image for visualization.
+- `puzzle.png`: Input image containing the puzzle to solve.
+- `detections.png`: Debug image showing detected symbols and constraints.
+- `filled.png`: Final output image with the solution filled in.
+- `x_template.png`: Template for detecting the "X" constraint.
+- `equals_template.png`: Template for detecting the "=" constraint.
+
+## Requirements
+
+Make sure you have the following installed:
+
+- Python 3.x
+- OpenCV (`opencv-python`)
+- NumPy (`numpy`)
 
 ## Example
 
-Start with an empty board:
+Below is a sample pipeline from raw puzzle to solution:
 
-![puzzle](https://github.com/user-attachments/assets/2710e2a5-de89-46ae-adbe-7010b0df9ff8)
+![puzzle](https://github.com/user-attachments/assets/example/puzzle.png)
+![detections](https://github.com/user-attachments/assets/example/detections.png)
+![filled](https://github.com/user-attachments/assets/example/filled.png)
 
-Detect the initial pieces and constraints:
+---
 
-![detections](https://github.com/user-attachments/assets/8a5ba83a-7f01-43e2-ab19-ca1707847421)
-
-Solve the puzzle and fill in the missing values:
-
-![filled](https://github.com/user-attachments/assets/da5ce730-d961-4fe7-b15c-985d2d7b5f5d)
-
-
-## Usage
-
-Make sure you have the required images:
-
-- `puzzle.png` — your puzzle screenshot
-- `equals_template.png` — cropped template of the "=" constraint
-- `x_template.png` — cropped template of the "X" constraint
-
-Then run:
-
-```bash
-python main.py
+You must ensure that `equals_template.png` and `x_template.png` closely match the symbols used in the puzzle image for accurate detection.
