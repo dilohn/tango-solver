@@ -31,12 +31,7 @@ Make sure you have the following installed:
 
 ## Example
 
-Below is a sample pipeline from raw puzzle to solution:
+![puzzle](https://github.com/user-attachments/assets/aa786bb4-45fb-4697-b9e1-8ae5e0c6b456)
+![detections](https://github.com/user-attachments/assets/baa018f5-5f58-413f-82f3-24a889730f78)
+![filled](https://github.com/user-attachments/assets/6263f7dc-545e-4705-80b1-cf7fa26ff31b)
 
-![puzzle](https://github.com/user-attachments/assets/example/puzzle.png)
-![detections](https://github.com/user-attachments/assets/example/detections.png)
-![filled](https://github.com/user-attachments/assets/example/filled.png)
-
----
-
-You must ensure that `equals_template.png` and `x_template.png` closely match the symbols used in the puzzle image for accurate detection.
